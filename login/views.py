@@ -14,12 +14,12 @@ def login_(request):
                 user = authenticate(username=user_name, password=user_password)
                 if user is not None:
                     login(request, user)
-                    return redirect('/')
+                    return redirect('builder')
         else:
             fm = HandelLoginForm()
         return render(request, 'login/login.html', {'form': fm})
     else:
-        return redirect("/")
+        return redirect("homepage")
 
 
 def signup(request):
@@ -42,11 +42,11 @@ def signup(request):
                     username=username, password=password, email=email, first_name=first_name, last_name=last_name)
         return render(request, 'login/signup.html', {'umsg': username_msg, 'email_msg': email_msg})
     else:
-        return redirect('/login')
+        return redirect('login')
 
 # logout
 
 
 def logout_(request):
     logout(request)
-    return redirect('/')
+    return redirect('homepage')
