@@ -1,0 +1,46 @@
+/* home page  */
+section#hero_ {
+    width: 100%;
+    background: #a2d6c5;
+}
+
+.content h1 {
+    color: #212e5e;
+    font-size: 4.7rem;
+    line-height: 5.8rem;
+    margin-bottom: 2rem;
+    font-family: system-ui;
+    font-weight: 700;
+}
+
+.content h1 span {
+    color: white;
+}
+
+.content {
+    margin-left: 20px;
+    padding-bottom: 5em;
+}
+
+.content p {
+    margin-top: -18px;
+    color: gray;
+    font-weight: 300;
+    font-family: system-ui;
+}
+
+.btn_ {
+    width: 230px;
+    padding: 12px;
+    margin-top: 20px;
+}
+
+.hero_img img {
+    width: 55%;
+    box-shadow: 0px 0px 13px gray;
+}
+
+.hero_img {
+    display: flex;
+    justify-content: center;
+}

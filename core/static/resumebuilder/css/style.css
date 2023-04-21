@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+body {
+    background: #1c242c;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.header_top a {
+    color: white;
+    text-decoration: none;
+    font-family: system-ui;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.header_top a h5 {
+    font-size: 35px;
+}
+
+.my_content {
+    width: 70px;
+    text-align: center;
+    padding: 0.6rem 0.7rem 1.6rem 0.7rem;
+    background-color: #425061;
+    margin-bottom: 10px;
+    border-radius: 10px 10px 0px 0px;
+    height: 89px;
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+}
+
+.my_templtes {
+    width: 70px;
+    text-align: center;
+    padding: 0.6rem 0.7rem 1.6rem 0.7rem;
+    background-color: #425061;
+    border-radius: 0px 0px 10px 10px;
+    height: 89px;
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+}
+
+.my_templtes i {
+    font-size: 22px;
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.my_content i {
+    font-size: 22px;
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+div#sidebar_contant_ {
+    position: absolute;
+    top: 30%;
+}
+
+.resume_download_menu {
+    width: 70%;
+    background: #425061;
+    margin: 0 auto;
+    height: 45px;
+    border-radius: 50px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .1);
+    padding-left: 20px;
+}
+
+.customizecontainer {
+    line-height: 44px;
+}
+
+i span {
+    font-size: 14px;
+    font-family: system-ui;
+    font-weight: 500;
+    margin-left: 7px;
+}
+
+.customizecontainer {
+    cursor: pointer;
+}
+
+.customizecontainer i {
+    font-size: 20px;
+    color: #cdcdcd;
+}
+
+div#resume_contaier_wrap {
+    /* box-shadow: 0px 0px 2px 0px gray; */
+    border-radius: 5px;
+    padding: 5px;
+    /* overflow: scroll;
+    height: 90vh; */
+}
+
+.resume_wrapp {
+    height: 100%;
+}
+
+.picture_section {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.picture_section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.clear {
+    clear: both;
+}
+
+/* div#documentwrapp {
+    background: #425061;
+    margin: 0 auto;
+    height: 45px;
+    border-radius: 50px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .1);
+    padding-left: 20px;
+} */
+div#documentwrapp i {
+    color: white;
+    font-size: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+div#documentwrapp {
+    display: flex;
+    align-items: center;
+}
+
+.contact_info {
+    color: white;
+    margin-left: 20px;
+}
+
+.contact_info hr {
+    margin: 0;
+    border: 1.3px solid white;
+    opacity: 1;
+}
+
+.contact_info ul {
+    margin: 0;
+    padding: 0;
+}
+
+.contact_info ul li {
+    list-style: none;
+    font-size: 17px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    line-height: 16px;
+    margin-top: 18px;
+}
+
+.contact_info ul li span {
+    font-size: 14px;
+    color: #cdcdcd;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+.education {
+    color: white;
+    margin-left: 20px;
+}
+
+
+.education hr {
+    margin: 0;
+    border: 1.3px solid white;
+    opacity: 1;
+}
+
+.education ul {
+    margin: 0;
+    padding: 0;
+}
+
+.education ul li {
+    list-style: none;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    line-height: 19px;
+    margin-bottom: 19px;
+    margin-top: 20px;
+    color: lightgray;
+}
+
+.education ul li span {
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.skills {
+    color: white;
+    margin-left: 20px;
+    padding-bottom: 100px;
+}
+
+
+.skills hr {
+    margin: 0;
+    border: 1.3px solid white;
+    opacity: 1;
+}
+
+.skills ul {
+    margin: 0;
+}
+
+.skills ul li {
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    line-height: 19px;
+    margin-bottom: 15px;
+    margin-top: 12px;
+    color: lightgray;
+}
+
+.skills ul li span {
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+div#document_content h1 {
+    font-size: 46px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: #34394C;
+}
+
+div#document_content h1 span {
+    font-weight: 500;
+}
+
+p.subtitle {
+    font-size: 22px;
+    line-height: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+p.aboutme {
+    font-size: 15px;
+    color: #484848;
+    margin-bottom: 40px;
+}
+
+div#workhistory h1 {
+    font-size: 30px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: #34394C;
+}
+
+div#workhistory hr {
+    border: 1.3px solid #192242;
+    border-radius: 10px;
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+}
+
+div#workhistory ul {
+    margin-top: 25px;
+    padding: 0;
+}
+
+div#workhistory ul li {
+    font-size: 20px;
+    list-style-type: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #1e1e1e;
+    line-height: 25px;
+}
+
+div#workhistory ul li span {
+    color: #626262;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+p.jobtitlework {
+    margin-top: 35px !important;
+    font-size: 23px !important;
+    font-weight: bold !important;
+    color: #34394C !important;
+    line-height: 1px;
+}
+
+#workhistory p {
+    font-size: 15px;
+    color: #484848;
+    margin-bottom: 40px;
+    margin-top: -21px;
+    font-family: 'Roboto';
+}
+
+.certificate h3 {
+    font-size: 30px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: #34394C;
+}
+
+.certificate hr {
+    border: 1.3px solid #192242;
+    border-radius: 10px;
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+}
+
+.certificate ul {
+    margin-top: 20px;
+    padding: 0;
+}
+
+.certificate ul li {
+    font-size: 18px;
+    font-family: 'Roboto';
+    font-weight: 600;
+    color: #1e1e1e;
+    line-height: 25px;
+    list-style: none;
+    margin-top: 15px;
+}
+
+.certificate ul li span {
+    color: #000000;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.others h3 {
+    font-size: 30px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: #34394C;
+}
+
+.others hr {
+    border: 1.3px solid #192242;
+    border-radius: 10px;
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+}
+
+.others ul li {
+    color: #000000;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.others_ p {
+    font-weight: 600;
+}

@@ -1,0 +1,138 @@
+*::-webkit-scrollbar {
+    display: none;
+}
+
+form label {
+    font-size: 12px;
+}
+
+.form-control::placeholder {
+    color: rgb(156, 156, 156);
+    opacity: 1;
+}
+
+.button_controler {
+    margin-top: 5em;
+    position: fixed;
+    bottom: 15px;
+    width: 32%;
+}
+
+div#sidebar {
+    height: 100vh;
+    background: #172340;
+    color: #ebebeb;
+    margin: 0;
+    padding: 0;
+}
+
+.top-sidebar-header h4 {
+    margin-top: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    padding: 0px 10px;
+}
+
+.indicator ul {
+    margin: 0;
+    padding: 0;
+}
+
+.indicator ul li {
+    list-style: none;
+    height: 45px;
+    line-height: 45px;
+    font-size: 15px;
+    font-family: system-ui;
+    color: #dfdfdf;
+    cursor: pointer;
+    transition: all .2s;
+    padding: 0px 20px;
+}
+
+.indicator ul li:hover {
+    color: #a7a7a7;
+}
+
+.indicator .active {
+    background: #394665ed;
+    font-weight: 500;
+    color: white;
+}
+
+button#tggole {
+    padding: 5px;
+    margin-left: 10px;
+    text-align: center;
+    background: none;
+    border: none;
+}
+
+button#tggole i {
+    font-size: 20px;
+}
+
+div#form_wrapp {
+    width: 100%;
+    height: 70vh;
+    overflow: scroll;
+}
+
+.tggole_btn_control {
+    width: 39%;
+}
+
+a.btn.btn-success.download_btn {
+    padding: 10px;
+    position: relative;
+    width: 50%;
+    top: 20px;
+    left: 25%;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.resume_container {
+    width: 100%;
+    height: 83vh;
+    overflow: scroll;
+    box-shadow: 0px 0px 5px gray !important;
+}
+
+nav#navbar_ {
+    box-shadow: 0 2.5px 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.tab {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+/* cv  */
+.wrapper img {
+    width: 100%;
+}
+
+.wrapper {
+    padding: 5px;
+}
+
+a#login_ {
+    text-decoration: none !important;
+    margin-right: 15px !important;
+    color: black !important;
+}
+
+.top-sidebar-header a {
+    color: white;
+    text-decoration: none;
+}

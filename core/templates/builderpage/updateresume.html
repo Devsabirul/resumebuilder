@@ -1,0 +1,535 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+Resume builder
+{% endblock title %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 d-none" id="sidebar">
+            <div class="top-sidebar-header">
+                <a href="{% url 'homepage' %}">
+                    <h4>Resume Builder</h4>
+                </a>
+                <hr>
+            </div>
+            <div class="clear"></div>
+            <div class="indicator">
+                <ul>
+                    <li class="indicatoritem">Personal Info</li>
+                    <li class="indicatoritem">Work History</li>
+                    <li class="indicatoritem">Education</li>
+                    <li class="indicatoritem">Skills</li>
+                    <li class="indicatoritem">Footer</li>
+                    <li class="indicatoritem">Hobby/Interest</li>
+                    <li class="indicatoritem">Languages</li>
+                    <li class="indicatoritem">Certificates</li>
+                    <li class="indicatoritem">Review and Download</li>
+                </ul>
+                <hr>
+                <div>
+                    <button class="btn btn-outline-primary p-2 text-center"
+                        style="width: 90% !important;margin-left: 10px;">Add Section</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12" id="main-container">
+            <div class="row">
+                <nav class="navbar navbar-expand-lg shadow-sm" data-bs-theme="light" id="navbar_">
+                    <button id="tggole"><i class="fa fa-bars"></i></button>
+                    <div class="container">
+                        <a class="navbar-brand" href="#" id="indicator">Personal Info</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse  navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ms-auto d-flex align-items-center">
+                                <li class="nav-item">
+                                    {% if user.is_authenticated %}
+                                    <a class="nav-link active" aria-current="page" href="#"><img
+                                            src="https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
+                                            alt="Avatar" class="avatar"> &nbsp;&nbsp;
+                                        <span>{{username}}</span>
+                                    </a>
+                                    {% else %}
+                                    <a href="{% url 'login' %}" id="login_">Login</a>
+                                    {% endif %}
+                                </li>
+                                {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{% url 'logout_' %}"
+                                        id="login_"><span><i class="fa-solid fa-right-from-bracket"></i></span></a>
+                                </li>
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="col-lg-5 p-3" id="wrapp">
+                    <section class="tabpanel form-control">
+                        <div id="form_wrapp">
+                            <form action="" method="POST" class=" p-3" id="myForm" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="tab">
+                                    <div class="row">
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="First_Name" class="form-label">First Name</label>
+                                            <input type="text" class="form-control p-3" id="First_Name"
+                                                value="{{resume.first_name}}" name="first_name" placeholder="Mark"
+                                                required>
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="Last_Name" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control p-3" id="Last_Name" name="last_name"
+                                                value="{{resume.last_name}}" placeholder="Reynolds" required>
+                                        </div>
+                                        <div class="mb-3 col-lg-12">
+                                            <label for="jobtitle" class="form-label">Job Title</label>
+                                            <input type="text" class="form-control p-3" id="jobtitle" name="jobtitle"
+                                                value="{{resume.jobtitle}}" placeholder="Back-End Developer">
+                                        </div>
+                                        <div class="mb-3 col-lg-12">
+                                            <label for="footer" class="form-label">About Me</label>
+                                            <textarea class="form-control mb-3" rows="12" placeholder=""
+                                                value="{{resume.aboutme}}" id="aboutme"
+                                                name="aboutme">{{resume.aboutme}}</textarea>
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control p-3" id="email" name="email"
+                                                value="{{resume.email}}" placeholder="your.email@example.com">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="phone" class="form-label">Phone</label>
+                                            <input type="text" class="form-control p-3" id="phone" name="phone"
+                                                value="{{resume.phone}}" placeholder="+1 (115) 296-9661">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="github" class="form-label">Github</label>
+                                            <input type="text" class="form-control p-3" id="github" name="github"
+                                                value="{{resume.github}}" placeholder="+1 (115) 296-9661">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="Linkedin" class="form-label">Linkedin</label>
+                                            <input type="text" class="form-control p-3" id="Linkedin" name="Linkedin"
+                                                value="{{resume.Linkedin}}" placeholder="+1 (115) 296-9661">
+                                        </div>
+                                        <div class="mb-3 col-lg-12">
+                                            <label for="Image" class="form-label">Picture</label>
+                                            <a href="{{resume.image.url}}">click here</a>
+                                            <input type="file" class="form-control " name="image"
+                                                value="{{resume.image.url}}" id="Image">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- work section  -->
+                                <div class="tab">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h5>Position</h5>
+                                        </div>
+                                        <div class="mb-3 col-lg-12">
+                                            <label for="jobtitle" class="form-label">Job Title</label>
+                                            <input type="text" value="{{resume.positiontitle1}}"
+                                                class="form-control p-3" id="jobtitle" name="positiontitle1"
+                                                placeholder="Administratie Assistant">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="employer" class="form-label">Employer</label>
+                                            <input type="text" value="{{resume.employer}}" class="form-control p-3"
+                                                id="employer" name="employer" placeholder="Reynolds">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="city" class="form-label">City</label>
+                                            <input type="text" value="{{resume.positioncity}}" class="form-control p-3"
+                                                id="city" name="positioncity" placeholder="Back-End Developer">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="years" class="form-label">Years</label>
+                                            <input type="text" class="form-control p-3" id="years"
+                                                value="{{resume.positionyear}}" name="positionyear" placeholder="2015">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="month" class="form-label">Month</label>
+                                            <input type="text" class="form-control p-3" id="month"
+                                                value="{{resume.positionmonth}}" name="positionmonth"
+                                                placeholder="January">
+                                        </div>
+                                        <div class="mb-3 col-lg-6 todate">
+                                            <label for="years" class="form-label">Years</label>
+                                            <input type="text" class="form-control p-3" id="years"
+                                                value="{{resume.todayyear}}" name="todayyear" placeholder="2023">
+                                        </div>
+                                        <div class="mb-3 col-lg-6 todate">
+                                            <label for="month" class="form-label">Month</label>
+                                            <input type="text" class="form-control p-3" id="month"
+                                                value="{{resume.todaymonth}}" name="todaymonth" placeholder="January">
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">I currently work
+                                                here</label>
+                                        </div>
+                                        <div class="mb-3 col-lg-12 todate">
+                                            <label for="summary_work" class="form-label">what did you do at
+                                                fdsaf?</label>
+                                            <textarea class="form-control mb-3" rows="3" value="{{resume.todayfdsaf}}"
+                                                name="todayfdsaf" placeholder=""
+                                                id="summary_work">{{resume.todayfdsaf}}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- education section  -->
+                                <div class="tab">
+                                    <div class="mb-3 row">
+                                        <div class="col-lg-12">
+                                            <h5>Degree</h5>
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="fieldofstady" class="form-label">Field of study</label>
+                                            <input type="text" class="form-control p-3" id="fieldofstady"
+                                                value="{{resume.degreefield}}" name="degreefield"
+                                                placeholder="Information Technology">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="Degree" class="form-label">Degree</label>
+                                            <input type="text" class="form-control p-3" id="Degree" name="degree"
+                                                value="{{resume.degree}}" placeholder="Bachelor of Engineering">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="School_name" class="form-label">School Name</label>
+                                            <input type="text" class="form-control p-3" id="School_name"
+                                                value="{{resume.degreeschoolname}}" name="degreeschoolname"
+                                                placeholder="University of Dhaka">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="city" class="form-label">City</label>
+                                            <input type="text" class="form-control p-3" id="city"
+                                                name="degreeschoolcity" value="{{resume.degreeschoolcity}}"
+                                                placeholder="Dhaka">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="years" class="form-label">Years</label>
+                                            <input type="text" value="{{resume.degreeschoolyear}}"
+                                                class="form-control p-3" id="years" name="degreeschoolyear"
+                                                placeholder="2015">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="month" class="form-label">Month</label>
+                                            <input type="text" class="form-control p-3" id="month"
+                                                value="{{resume.degreeschoolmonth}}" name="degreeschoolmonth"
+                                                placeholder="January">
+                                        </div>
+                                        <div class="mb-3 col-lg-6 todate">
+                                            <label for="years" class="form-label">Years</label>
+                                            <input type="text" name="degreeschooltoyear" class="form-control p-3"
+                                                id="years" value="{{resume.degreeschooltoyear}}" placeholder="2023">
+                                        </div>
+                                        <div class="mb-3 col-lg-6 todate">
+                                            <label for="month" class="form-label">Month</label>
+                                            <input type="text" name="degreeschooltomonth" class="form-control p-3"
+                                                value="{{resume.degreeschooltomonth}}" id="month" placeholder="January">
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">I currently work
+                                                here</label>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="mb-3 row ">
+                                        <div class="col-lg-12">
+                                            <h5>HSC</h5>
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="fieldofstady" class="form-label">Field of study</label>
+                                            <input type="text" class="form-control p-3" id="fieldofstady"
+                                                name="hscfield" value="{{resume.hscfield}}"
+                                                placeholder="Information Technology">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="Degree" class="form-label">Degree</label>
+                                            <input type="text" class="form-control p-3" id="Degree" name="hscdegree"
+                                                value="{{resume.hscdegree}}" placeholder="Bachelor of Engineering">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="School_name" class="form-label">School Name</label>
+                                            <input type="text" class="form-control p-3" id="School_name"
+                                                value="{{resume.hscdegreeschoolname}}" name="hscdegreeschoolname"
+                                                placeholder="University of Dhaka">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="city" class="form-label">City</label>
+                                            <input type="text" class="form-control p-3" id="city"
+                                                value="{{resume.hscdegreeschoolcity}}" name="hscdegreeschoolcity"
+                                                placeholder="Dhaka">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="years" class="form-label">Years</label>
+                                            <input type="text" value="{{resume.hscdegreeschooltoyear}}"
+                                                class="form-control p-3" id="years" name="hscdegreeschoolyear"
+                                                placeholder="2015">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="month" class="form-label">Month</label>
+                                            <input type="text" value="{{resume.hscdegreeschoolmonth}}"
+                                                class="form-control p-3" id="month" name="hscdegreeschoolmonth"
+                                                placeholder="January">
+                                        </div>
+                                        <div class="mb-3 col-lg-6 todate">
+                                            <label for="years" class="form-label">Years</label>
+                                            <input type="text" value="{{resume.hscdegreeschooltoyear}}"
+                                                class="form-control p-3" id="years" name="hscdegreeschooltoyear"
+                                                placeholder="2023">
+                                        </div>
+                                        <div class="mb-3 col-lg-6 todate">
+                                            <label for="month" class="form-label">Month</label>
+                                            <input type="text" value="{{resume.hscdegreeschooltomonth}}"
+                                                class="form-control p-3" id="month" name="hscdegreeschooltomonth"
+                                                placeholder="January">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Skills  -->
+                                <div class="tab row">
+                                    <div class="mb-3 col-lg-12">
+                                        <h5>Skills</h5>
+                                        <label for="skills" class="form-label">Skills Name</label>
+                                        <input type="text" class="form-control p-3" id="skills"
+                                            value="{{resume.skills}}" placeholder="PHP, Python, Javascript"
+                                            name="skills">
+                                    </div>
+                                </div>
+                                <!-- footer  -->
+                                <div class="tab row">
+                                    <div class="mb-3 col-lg-12">
+                                        <h5>Footer</h5>
+                                        <label for="footer" class="form-label">footer content</label>
+                                        <textarea class="form-control mb-3" rows="12" placeholder="" id="footer"
+                                            value="{{resume.footer}}" name="footer">{{resume.footer}}</textarea>
+                                    </div>
+                                </div>
+                                <!-- Hobby and interest  -->
+                                <div class="tab row">
+                                    <div class="mb-3 col-lg-12">
+                                        <h5>Hobby/Interest</h5>
+                                        <label for="hobby" class="form-label">hobby content</label>
+                                        <input type="text" class="form-control p-3" id="hobby" value="{{resume.hobby}}"
+                                            placeholder="Playing, Learning, Music" name="hobby">
+                                    </div>
+                                </div>
+                                <!-- Languages  -->
+                                <div class="tab row">
+                                    <div class="mb-3 col-lg-12">
+                                        <h5>Languages</h5>
+                                        <label for="skills" class="form-label">Languages</label>
+                                        <input type="text" class="form-control p-3" id="skills"
+                                            value="{{resume.language}}" placeholder="English, Hindi, Bangla"
+                                            name="language">
+                                    </div>
+                                </div>
+                                <!-- Certificates  -->
+                                <div class="tab">
+                                    <div class="row">
+                                        <div class="mb-3 col-lg-12">
+                                            <h5>Certificate</h5>
+                                            <label for="Certificate" class="form-label">Certificate</label>
+                                            <input type="text" class="form-control p-3" id="Certificate"
+                                                value="{{resume.certificate}}"
+                                                placeholder="Back-end Developer Specialist Certificates"
+                                                name="certificate">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="years" class="form-label">Years</label>
+                                            <input type="text" class="form-control p-3" id="years"
+                                                name="certificateyear" value="{{resume.certificateyear}}"
+                                                placeholder="2015">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="month" class="form-label">Month</label>
+                                            <input type="text" value="{{resume.certificatemonth}}"
+                                                class="form-control p-3" id="month" name="certificatemonth"
+                                                placeholder="January">
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="mb-3 col-lg-12">
+                                            <h5>Certificate</h5>
+                                            <label for="Certificate" class="form-label">Certificate</label>
+                                            <input type="text" class="form-control p-3" id="Certificate"
+                                                value="{{resume.certificate1}}"
+                                                placeholder="Back-end Developer Specialist Certificates"
+                                                name="certificate1">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="years" class="form-label">Years</label>
+                                            <input type="text" class="form-control p-3" id="years"
+                                                value="{{resume.certificateyear1}}" name="certificateyear1"
+                                                placeholder="2015">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="month" class="form-label">Month</label>
+                                            <input type="text" class="form-control p-3" id="month"
+                                                value="{{resume.certificatemonth1}}" name="certificatemonth1"
+                                                placeholder="January">
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="mb-3 col-lg-12">
+                                            <h5>Certificate</h5>
+                                            <label for="Certificate" class="form-label">Certificate</label>
+                                            <input type="text" class="form-control p-3" id="Certificate"
+                                                value="{{resume.certificate2}}" name="certificate2"
+                                                placeholder="Back-end Developer Specialist Certificates">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="years" class="form-label">Years</label>
+                                            <input type="text" name="certificateyear2" class="form-control p-3"
+                                                value="{{resume.certificateyear2}}" id="years" placeholder="2015">
+                                        </div>
+                                        <div class="mb-3 col-lg-6">
+                                            <label for="month" class="form-label">Month</label>
+                                            <input type="text" value="{{resume.certificatemonth2}}"
+                                                name="certificatemonth2" class="form-control p-3" id="month"
+                                                placeholder="January">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- download -->
+                                <div class="tab d-flex justify-content-center align-items-center">
+                                    <div class="" style="position: absolute;top: 35%;">
+                                        <h1 class="text-center">Congratulations !</h1>
+                                        <a href="#" class="btn btn-success download_btn">Download Now</a>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="shadow-sm mb-0 form-control bg-white rounded button_controler tggole_btn_control d-flex justify-content-between"
+                            id="button_controler">
+                            <button class="btn btn-outline-secondary" style="width: 140px;padding: 10px;"
+                                id="back">Back</button>
+                            <button class="btn btn-success" style="width: 140px;padding: 10px;" id="next">Next</button>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-lg-7 mt-3">
+                    <div class="resume_container shadow-sm">
+                        <div class="wrapper">
+                            <div class="image_wrap">
+                                <img src="https://marketplace.canva.com/EAFRuCp3DcY/1/0/1131w/canva-black-white-minimalist-cv-resume-f5JNR-K5jjw.jpg"
+                                    alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    var tggole = document.getElementById("tggole");
+    let sidebar = document.getElementById("sidebar");
+    let main_container = document.getElementById("main-container");
+    let button_controler = document.getElementById("button_controler");
+    let checkbox = document.getElementById("exampleCheck1").value;
+    tggole.addEventListener('click', function () {
+        sidebar.classList.toggle("d-none");
+        main_container.classList.toggle("col-lg-12");
+        main_container.classList.toggle("col-lg-10");
+        button_controler.classList.toggle("tggole_btn_control");
+    });
+
+    let indicatoritem = document.querySelectorAll(".indicatoritem");
+    let indicator = document.querySelectorAll(".indicator");
+    let alltab = document.querySelectorAll(".tab");
+    let backbtn = document.getElementById("back");
+    let nextbtn = document.getElementById("next");
+    let submit = document.getElementById("submit");
+    let i = 0;
+    if (i === 0) {
+        backbtn.style.display = 'none';
+
+    } else {
+        backbtn.style.display = 'block';
+    }
+    alltab[i].classList.add('show');
+    indicatoritem[i].classList.add("active");
+    document.getElementById("indicator").innerHTML = indicatoritem[i].getInnerHTML();
+
+    nextbtn.addEventListener("click", function () {
+        i += 1
+        if (i >= alltab.length) {
+
+        } else {
+
+            for (let j = 0; j < alltab.length; j++) {
+                alltab[j].classList.remove('show');
+                indicatoritem[j].classList.remove("active");
+            }
+
+            alltab[i].classList.add('show');
+            indicatoritem[i].classList.add("active");
+        }
+
+        if (i === 0) {
+            backbtn.style.display = 'none';
+        } else {
+            backbtn.style.display = 'block';
+        }
+        if (i === alltab.length - 1) {
+            nextbtn.innerHTML = "Submit";
+            nextbtn.setAttribute("id", "submit");
+        } else {
+            nextbtn.innerHTML = "Next";
+            nextbtn.removeAttribute("id", "submit");
+        }
+
+        if (i === 9) {
+            document.getElementById("myForm").submit()
+        }
+        document.getElementById("indicator").innerHTML = indicatoritem[i].getInnerHTML();
+    });
+
+    backbtn.addEventListener("click", function () {
+        i -= 1
+        if (i >= alltab.length) {
+
+        } else {
+            for (let j = 0; j < alltab.length; j++) {
+                alltab[j].classList.remove('show');
+                indicatoritem[j].classList.remove("active");
+            }
+            alltab[i].classList.add('show');
+            indicatoritem[i].classList.add("active");
+        }
+
+        if (i === 0) {
+            backbtn.style.display = 'none';
+        } else {
+            backbtn.style.display = 'block';
+        }
+        if (i === alltab.length - 1) {
+            nextbtn.innerHTML = "Submit";
+            nextbtn.setAttribute("id", "submit");
+        } else {
+            nextbtn.innerHTML = "Next";
+            nextbtn.removeAttribute("id", "submit");
+        }
+        if (i === 9) {
+            document.getElementById("myForm").submit()
+        }
+        document.getElementById("indicator").innerHTML = indicatoritem[i].getInnerHTML();
+    });
+
+</script>
+{% endblock body %}
